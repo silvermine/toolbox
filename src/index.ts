@@ -13,3 +13,5 @@ export * from './utils/is-object';
 export * from './utils/is-promise';
 export * from './utils/is-promise-like';
 export * from './utils/is-string';
+
+export * from './utils/delay';
