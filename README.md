@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="300" height="300" src="https://raw.github.com/silvermine/toolbox/master/src/logo/toolbox.png" alt="Tools such as a protractor, calculator, pencil, and a pen inside a shirt pocket.">
+</p>
+
 # Silvermine Toolbox - TypeScript Types and Utilities
 
 [![NPM Version](https://img.shields.io/npm/v/@silvermine/toolbox.svg)](https://www.npmjs.com/package/@silvermine/toolbox)

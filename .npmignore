@@ -30,3 +30,6 @@ npm-debug.log
 
 # NYC
 .nyc_output
+
+# Brand-related
+src/logo/**
