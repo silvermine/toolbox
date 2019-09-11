@@ -1,4 +1,5 @@
 export * from './types/KeyValueStringObject';
+export * from './types/PropsWithType';
 export * from './types/StringArrayOfStringsMap';
 export * from './types/StringMap';
 export * from './types/StringUnknownMap';
