@@ -16,6 +16,6 @@
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-type-alias
-export type PropsWithType<O, T> = keyof Pick<O, {
+export type PropsWithType<O, T> = Exclude<keyof Pick<O, {
    [K in keyof O]: O[K] extends T ? K : never;
-}[keyof O]>;
+}[keyof O]>, undefined>;
