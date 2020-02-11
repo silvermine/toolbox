@@ -7,7 +7,7 @@
    "module": "./dist/esm/index",
    "scripts": {
       "prepare": "grunt build",
-      "test": "TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts"
+      "test": "check-node-version --npm 6.13.4 && TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts"
    },
    "author": "Matt Luedke",
    "license": "MIT",
@@ -24,10 +24,6 @@
       "types",
       "type guards"
    ],
-   "engines": {
-      "node": ">=8.10.0",
-      "npm": "6.4.1"
-   },
    "peerDependencies": {
       "tslib": "1.9.x"
    },
@@ -43,6 +39,7 @@
       "@types/node": "8.10.36",
       "@types/sinon": "5.0.5",
       "chai": "4.2.0",
+      "check-node-version": "4.0.2",
       "coveralls": "3.0.2",
       "cz-conventional-changelog": "2.1.0",
       "grunt": "1.0.3",
