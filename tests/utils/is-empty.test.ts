@@ -25,7 +25,7 @@ describe('isEmpty', () => {
       expect(t.isEmpty(3.14)).to.strictlyEqual(true);
       // Objects with prototype properties are considered empty
       // @see https://github.com/jashkenas/underscore/blob/d5fe0fd4060f13b40608cb9d92eda6d857e8752c/underscore.js#L1301
-      expect(t.isEmpty(new RegExp(''))).to.strictlyEqual(true);
+      expect(t.isEmpty(/(?:)/)).to.strictlyEqual(true);
 
       // eslint-disable-next-line no-empty-function
       expect(t.isEmpty(() => {})).to.strictlyEqual(true);
