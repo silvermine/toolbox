@@ -21,4 +21,5 @@ export * from './utils/is-string';
 export * from './utils/is-undefined';
 
 export * from './utils/chunk';
+export * from './utils/flatten';
 export * from './utils/delay';
