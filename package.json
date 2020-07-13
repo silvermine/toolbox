@@ -54,7 +54,7 @@
       "nyc": "13.1.0",
       "sinon": "5.1.1",
       "source-map-support": "0.5.16",
-      "standard-version": "5.0.2",
+      "standard-version": "8.0.1",
       "ts-node": "7.0.1",
       "tslib": "1.9.3",
       "typescript": "3.2.2"
