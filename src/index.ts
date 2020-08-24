@@ -1,4 +1,6 @@
 export * from './types/KeyValueStringObject';
+export * from './types/Omit';
+export * from './types/Optional';
 export * from './types/PropsWithType';
 export * from './types/RequireDefined';
 export * from './types/RequireOptional';
