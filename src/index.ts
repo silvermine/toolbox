@@ -22,5 +22,6 @@ export * from './utils/is-undefined';
 
 export * from './utils/chunk';
 export * from './utils/flatten';
+export * from './utils/pick';
 export * from './utils/pluck';
 export * from './utils/delay';
