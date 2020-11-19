@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 module.exports = (grunt) => {
    let config;
 
@@ -27,7 +29,7 @@ module.exports = (grunt) => {
          },
       },
       commands: {
-         tsc: './node_modules/.bin/tsc',
+         tsc: path.normalize('./node_modules/.bin/tsc'),
       },
       out: {
          dist: './dist',
