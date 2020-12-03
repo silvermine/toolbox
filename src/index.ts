@@ -15,6 +15,7 @@ export * from './utils/is-array';
 export * from './utils/is-array-of-strings';
 export * from './utils/is-empty';
 export * from './utils/is-enum-value';
+export * from './utils/is-map-with-values-of-type';
 export * from './utils/is-number';
 export * from './utils/is-object';
 export * from './utils/is-promise';
