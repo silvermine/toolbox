@@ -27,3 +27,4 @@ export * from './utils/chunk';
 export * from './utils/flatten';
 export * from './utils/pluck';
 export * from './utils/delay';
+export * from './utils/uniq';
