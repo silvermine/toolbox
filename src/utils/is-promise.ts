@@ -6,6 +6,6 @@ import { getTagString } from './get-tag-string';
  *
  * @returns `true` if `o` is a `Promise`
  */
-export function isPromise(o: any): o is Promise<unknown> {
+export function isPromise(o: unknown): o is Promise<unknown> {
    return isObject(o) && getTagString(o) === '[object Promise]';
 }

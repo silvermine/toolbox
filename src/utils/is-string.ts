@@ -8,6 +8,6 @@ import { getTagString } from './get-tag-string';
  * `string` values, even if the TypeScript compiler's `strictNullChecks` flag is set to
  * `false` in your project.
  */
-export function isString(o: any): o is string {
+export function isString(o: unknown): o is string {
    return typeof o === 'string' || (isObject(o) && getTagString(o) === '[object String]');
 }
