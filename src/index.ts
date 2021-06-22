@@ -13,6 +13,7 @@ export * from './utils/has-defined';
 export * from './utils/is-arguments';
 export * from './utils/is-array';
 export * from './utils/is-array-of-strings';
+export * from './utils/is-boolean';
 export * from './utils/is-empty';
 export * from './utils/is-enum-value';
 export * from './utils/is-map-with-values-of-type';
@@ -23,6 +24,7 @@ export * from './utils/is-promise-like';
 export * from './utils/is-set';
 export * from './utils/is-string';
 export * from './utils/is-undefined';
+export * from './utils/is-null';
 
 export * from './utils/chunk';
 export * from './utils/flatten';
