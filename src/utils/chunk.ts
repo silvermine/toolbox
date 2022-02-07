@@ -1,4 +1,4 @@
-export function chunk<T>(list: T[], size: number): T[][] {
+export function chunk<T>(list: readonly T[], size: number): T[][] {
    if (size < 1) {
       return [];
    }
