@@ -7,7 +7,8 @@
    "module": "./dist/esm/index",
    "scripts": {
       "prepare": "grunt build",
-      "test": "check-node-version --npm 6.13.4 && TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts",
+      "test:node-version": "check-node-version --npm 6.14.12 --print",
+      "test": "npm run test:node-version && TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts",
       "commitlint": "commitlint --from 0b9d320"
    },
    "author": "Matt Luedke",
@@ -29,15 +30,13 @@
       "tslib": "1.9.x"
    },
    "devDependencies": {
-      "@commitlint/cli": "8.3.5",
-      "@commitlint/config-conventional": "8.3.4",
-      "@commitlint/travis-cli": "8.3.5",
       "@silvermine/chai-strictly-equal": "1.1.0",
       "@silvermine/eslint-config": "3.1.0-beta.0",
+      "@silvermine/standardization": "1.2.1",
       "@silvermine/typescript-config": "git+https://github.com/silvermine/typescript-config.git#23213e33077089e723629dead5342abe6f3b3c8c",
       "@types/chai": "4.1.7",
       "@types/mocha": "5.2.5",
-      "@types/node": "8.10.36",
+      "@types/node": "12.20.45",
       "@types/sinon": "5.0.5",
       "chai": "4.2.0",
       "check-node-version": "4.0.2",
