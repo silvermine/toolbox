@@ -1,3 +1,3 @@
-export function isUndefined(val: any): val is undefined {
+export function isUndefined(val: unknown): val is undefined {
    return (typeof val === 'undefined');
 }

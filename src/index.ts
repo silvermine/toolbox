@@ -22,6 +22,8 @@ export * from './utils/is-promise';
 export * from './utils/is-promise-like';
 export * from './utils/is-string';
 export * from './utils/is-undefined';
+export * from './utils/is-null';
+export * from './utils/is-not-null-or-undefined';
 
 export * from './utils/chunk';
 export * from './utils/flatten';
