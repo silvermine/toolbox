@@ -29,3 +29,6 @@ export * from './utils/chunk';
 export * from './utils/flatten';
 export * from './utils/pluck';
 export * from './utils/delay';
+export * from './utils/get';
+export * from './utils/escape-html';
+export * from './utils/make-template';
