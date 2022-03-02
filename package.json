@@ -9,7 +9,8 @@
       "prepare": "grunt build",
       "test:node-version": "check-node-version --npm 6.14.12 --print",
       "test": "npm run test:node-version && TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts",
-      "commitlint": "commitlint --from 0b9d320"
+      "commitlint": "commitlint --from 0b9d320",
+      "standards": "npm run commitlint && grunt standards"
    },
    "author": "Matt Luedke",
    "license": "MIT",
