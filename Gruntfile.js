@@ -41,16 +41,6 @@ module.exports = (grunt) => {
 
       pkg: grunt.file.readJSON('package.json'),
 
-      eslint: {
-         target: [ ...config.js.all, ...config.ts.all ],
-         fix: {
-            src: [ ...config.js.all, ...config.ts.all ],
-            options: {
-               fix: true,
-            },
-         },
-      },
-
       exec: {
          options: {
             failOnError: true,
@@ -92,14 +82,11 @@ module.exports = (grunt) => {
       },
    });
 
-   grunt.loadNpmTasks('grunt-eslint');
+
    grunt.loadNpmTasks('grunt-exec');
    grunt.loadNpmTasks('grunt-contrib-clean');
    grunt.loadNpmTasks('grunt-concurrent');
    grunt.loadNpmTasks('grunt-contrib-watch');
-
-   grunt.registerTask('standards', [ 'eslint:target', 'exec:standards' ]);
-   grunt.registerTask('standards-fix', [ 'eslint:fix' ]);
 
    grunt.registerTask('build-types', [ 'exec:types' ]);
    grunt.registerTask('build-esm', [ 'exec:esm' ]);
@@ -108,6 +95,4 @@ module.exports = (grunt) => {
    grunt.registerTask('build', [ 'concurrent:build-ts-outputs' ]);
 
    grunt.registerTask('develop', [ 'clean:dist', 'build', 'watch' ]);
-
-   grunt.registerTask('default', [ 'standards' ]);
 };
