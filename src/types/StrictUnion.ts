@@ -6,7 +6,7 @@ type StrictUnionHelper<T, TAll> = T extends unknown ? (T & InvalidKeys<Exclude<U
 
 /**
  * A basic TypeScript union (e.g. A | B) results in a type containing the available
- * properties form the provided types. When StrictUnion is used (e.g. StrictUnion<A | B>),
+ * properties from the provided types. When StrictUnion is used (e.g. StrictUnion<A | B>),
  * the resulting type can only contain the properties from one of the types (e.g. all the
  * properties from A, but none of the properties from B).
  *
