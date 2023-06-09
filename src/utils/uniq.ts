@@ -1,4 +1,4 @@
-const _iterateeUniq = <T, U>(arr: T[], iteratee: (value: T, i: number, arr: T[]) => U): T[] => {
+const iterateeUniq = <T, U>(arr: T[], iteratee: (value: T, i: number, arr: T[]) => U): T[] => {
    const result: T[] = [],
          seen: U[] = [];
 
@@ -15,7 +15,7 @@ const _iterateeUniq = <T, U>(arr: T[], iteratee: (value: T, i: number, arr: T[])
 };
 
 
-const _sortedUniq = <T, U>(arr: T[]): T[] => {
+const sortedUniq = <T, U>(arr: T[]): T[] => {
    const result: T[] = [];
 
    let lastSeen: T | U | undefined;
@@ -32,7 +32,7 @@ const _sortedUniq = <T, U>(arr: T[]): T[] => {
 };
 
 
-const _standardUniq = <T>(arr: T[]): T[] => {
+const standardUniq = <T>(arr: T[]): T[] => {
    const result = arr.filter((value, index, _arr) => {
       return _arr.indexOf(value) === index;
    });
@@ -50,10 +50,10 @@ const _standardUniq = <T>(arr: T[]): T[] => {
  */
 export const uniq = <T, U>(arr: T[], isSorted?: boolean, iteratee?: (value: T, i: number, arr: T[]) => U): T[] => {
    if (iteratee) {
-      return _iterateeUniq(arr, iteratee);
+      return iterateeUniq(arr, iteratee);
    }
    if (isSorted) {
-      return _sortedUniq(arr);
+      return sortedUniq(arr);
    }
-   return _standardUniq(arr);
+   return standardUniq(arr);
 };

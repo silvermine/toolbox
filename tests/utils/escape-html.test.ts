@@ -21,9 +21,9 @@ describe('escapeHTML', () => {
    });
 
    it('handles newlines', () => {
-      const HTML = '<div class="greeting">\n<p>\nHi\n</p>\n</div>';
+      const html = '<div class="greeting">\n<p>\nHi\n</p>\n</div>';
 
-      expect(escapeHTML(HTML)).to.strictlyEqual('&lt;div class=&quot;greeting&quot;&gt;\n&lt;p&gt;\nHi\n&lt;/p&gt;\n&lt;/div&gt;');
+      expect(escapeHTML(html)).to.strictlyEqual('&lt;div class=&quot;greeting&quot;&gt;\n&lt;p&gt;\nHi\n&lt;/p&gt;\n&lt;/div&gt;');
    });
 
 });
