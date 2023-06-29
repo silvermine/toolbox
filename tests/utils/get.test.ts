@@ -4,7 +4,7 @@ import { get } from '../../src/index';
 
 describe('get', () => {
 
-   const TEST_OBJ = {
+   const testObj = {
       id: 123,
       person: {
          firstName: 'Marty',
@@ -18,17 +18,17 @@ describe('get', () => {
    };
 
    it('gets properties and sub-properties', () => {
-      expect(get(TEST_OBJ, 'id')).to.strictlyEqual(TEST_OBJ.id);
-      expect(get(TEST_OBJ, 'person')).to.strictlyEqual(TEST_OBJ.person);
-      expect(get(TEST_OBJ, 'person.firstName')).to.strictlyEqual(TEST_OBJ.person.firstName);
-      expect(get(TEST_OBJ, 'person.friends[0].lastName')).to.strictlyEqual(TEST_OBJ.person.friends[0].lastName);
-      expect(get(TEST_OBJ, 'person.friends[0].isHuman')).to.strictlyEqual(TEST_OBJ.person.friends[0].isHuman);
+      expect(get(testObj, 'id')).to.strictlyEqual(testObj.id);
+      expect(get(testObj, 'person')).to.strictlyEqual(testObj.person);
+      expect(get(testObj, 'person.firstName')).to.strictlyEqual(testObj.person.firstName);
+      expect(get(testObj, 'person.friends[0].lastName')).to.strictlyEqual(testObj.person.friends[0].lastName);
+      expect(get(testObj, 'person.friends[0].isHuman')).to.strictlyEqual(testObj.person.friends[0].isHuman);
       expect(get([ 1, 2, 3 ], 1)).to.strictlyEqual(2);
    });
 
    it('can handle key access syntax for objects', () => {
-      expect(get(TEST_OBJ, 'person[firstName]')).to.strictlyEqual(TEST_OBJ.person.firstName);
-      expect(get(TEST_OBJ, 'person[friends][0].isHuman')).to.strictlyEqual(TEST_OBJ.person.friends[0].isHuman);
+      expect(get(testObj, 'person[firstName]')).to.strictlyEqual(testObj.person.firstName);
+      expect(get(testObj, 'person[friends][0].isHuman')).to.strictlyEqual(testObj.person.friends[0].isHuman);
    });
 
    it('should favor a key match over a path', () => {
@@ -64,14 +64,14 @@ describe('get', () => {
    });
 
    it('accepts arrays of keys', () => {
-      const result = get({ people: [ TEST_OBJ ] }, [ 'people', 0, 'person', 'lastName' ]);
+      const result = get({ people: [ testObj ] }, [ 'people', 0, 'person', 'lastName' ]);
 
       expect(result).to.not.strictlyEqual(undefined);
-      expect(result).to.strictlyEqual(TEST_OBJ.person.lastName);
+      expect(result).to.strictlyEqual(testObj.person.lastName);
    });
 
    it('returns undefined for keys that don\'t exist', () => {
-      expect(get(TEST_OBJ, 'DNE')).to.strictlyEqual(undefined);
+      expect(get(testObj, 'DNE')).to.strictlyEqual(undefined);
       expect(get(100 as unknown as {}, 'DNE')).to.strictlyEqual(undefined);
       expect(get([] as unknown as {}, 'DNE')).to.strictlyEqual(undefined);
       expect(get(true as unknown as {}, 'DNE')).to.strictlyEqual(undefined);
@@ -84,8 +84,8 @@ describe('get', () => {
    });
 
    it('returns the default value for undefined values', () => {
-      expect(get(TEST_OBJ, 'id2', 100)).to.strictlyEqual(100);
-      expect(get(TEST_OBJ, 'person.DNE', true)).to.strictlyEqual(true);
+      expect(get(testObj, 'id2', 100)).to.strictlyEqual(100);
+      expect(get(testObj, 'person.DNE', true)).to.strictlyEqual(true);
       // null is not undefined, so `get` should return null
       expect(get({ name: null }, 'name')).to.strictlyEqual(null);
    });
