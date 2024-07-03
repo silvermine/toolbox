@@ -5,6 +5,8 @@ on: [ push, pull_request ]
 jobs:
    build:
       runs-on: ubuntu-latest
+      outputs:
+         nodeVersionList: ${{ steps.makeNodeVersionList.outputs.nodeVersionList }}
       steps:
          -
             uses: actions/checkout@v4
@@ -18,13 +20,18 @@ jobs:
          - run: npm ci
          - run: npm run check-node-version
          - run: npm run standards
+         -
+            id: makeNodeVersionList
+            run: |
+               echo "nodeVersionList='[ "'"'$(cat .nvmrc)'"'", 20, "'"'"lts/*"'"'", "'"'"latest"'"'" ]'"
+               echo "nodeVersionList='[ 16, 20, "'"'"lts/*"'"'", "'"'"latest"'"'" ]'" >> $GITHUB_OUTPUT
    test:
       needs: [ build ]
       runs-on: ubuntu-latest
       strategy:
          fail-fast: false
          matrix:
-            node-version: [ 16, 20, 'lts/*', 'latest' ]
+            node-version: ${{ fromJson(needs.build.outputs.nodeVersionList) }}
       steps:
          - uses: actions/checkout@v4
          -
