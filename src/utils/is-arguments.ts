@@ -6,6 +6,6 @@ import { getTagString } from './get-tag-string';
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
  * @returns `true` if `o` is a function's array-like `arguments` variable
  */
-export function isArguments(o: any): boolean {
+export function isArguments(o: unknown): o is IArguments {
    return getTagString(o) === '[object Arguments]';
 }

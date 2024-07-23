@@ -8,6 +8,6 @@ import { isObject } from './is-object';
  * considered `number`s. If you need to check for one of those values, you can use the
  * built-in `Number.isNaN` or `Number.isFinite` functions.
  */
-export function isNumber(o: any): o is number {
+export function isNumber(o: unknown): o is number {
    return typeof o === 'number' || (isObject(o) && getTagString(o) === '[object Number]');
 }

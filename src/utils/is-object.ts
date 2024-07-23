@@ -9,7 +9,7 @@
  * @see https://github.com/jashkenas/underscore/blob/d5fe0fd4060f13b40608cb9d92eda6d857e8752c/underscore.js#L1322
  * @returns `true` if `o` is an `object`
  */
-export function isObject(o: any): o is object {
+export function isObject(o: unknown): o is object {
    let type = typeof o;
 
    return o !== null && (type === 'object' || type === 'function');
