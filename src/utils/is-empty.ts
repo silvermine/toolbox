@@ -2,7 +2,32 @@ import { isArray } from './is-array';
 import { isString } from './is-string';
 import { isArguments } from './is-arguments';
 import { isUndefined } from './is-undefined';
+import { isNull } from './is-null';
+import { isBoolean } from './is-boolean';
+import { isNumber } from './is-number';
 import { isSet } from './is-set';
+import { isObject } from './is-object';
+
+
+interface IEmptyArguments extends IArguments {
+   length: 0;
+}
+
+interface IEmptyObj {
+   [s: string]: never;
+}
+
+type IEmptyTypes = (
+   null |
+   undefined |
+   boolean |
+   number |
+   never[] |
+   '' |
+   IEmptyArguments |
+   Set<never> |
+   IEmptyObj
+);
 
 /**
  * Checks if `o` is an empty object. An object is "empty" if it:
@@ -13,8 +38,8 @@ import { isSet } from './is-set';
  *
  * @returns `true` if `o` is empty
  */
-export function isEmpty(o: unknown): boolean {
-   if (o === null || isUndefined(o)) {
+export function isEmpty(o: unknown): o is IEmptyTypes {
+   if (isNull(o) || isUndefined(o) || isBoolean(o) || isNumber(o)) {
       return true;
    }
    if (isArray(o) || isString(o) || isArguments(o)) {
@@ -23,9 +48,5 @@ export function isEmpty(o: unknown): boolean {
    if (isSet(o)) {
       return o.size === 0;
    }
-   // Non-object arguments passed into Object.keys are coerced into objects (the only
-   // exception being undefined or null, which is handled above). Therefore, it's ok to
-   // assume the input is an object because it will be once passed through. See also:
-   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys#using_object.keys_on_primitives
-   return Object.keys(o as object).length === 0;
+   return isObject(o) && Object.keys(o).length === 0;
 }
