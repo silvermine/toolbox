@@ -22,6 +22,7 @@ export * from './utils/is-number';
 export * from './utils/is-object';
 export * from './utils/is-promise';
 export * from './utils/is-promise-like';
+export * from './utils/is-set';
 export * from './utils/is-string';
 export * from './utils/is-undefined';
 export * from './utils/is-null';
