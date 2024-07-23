@@ -14,6 +14,7 @@ export * from './utils/has-defined';
 export * from './utils/is-arguments';
 export * from './utils/is-array';
 export * from './utils/is-array-of-strings';
+export * from './utils/is-boolean';
 export * from './utils/is-empty';
 export * from './utils/is-enum-value';
 export * from './utils/is-map-with-values-of-type';
