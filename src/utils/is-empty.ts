@@ -2,6 +2,7 @@ import { isArray } from './is-array';
 import { isString } from './is-string';
 import { isArguments } from './is-arguments';
 import { isUndefined } from './is-undefined';
+import { isSet } from './is-set';
 
 /**
  * Checks if `o` is an empty object. An object is "empty" if it:
@@ -18,6 +19,9 @@ export function isEmpty(o: unknown): boolean {
    }
    if (isArray(o) || isString(o) || isArguments(o)) {
       return o.length === 0;
+   }
+   if (isSet(o)) {
+      return o.size === 0;
    }
    // Non-object arguments passed into Object.keys are coerced into objects (the only
    // exception being undefined or null, which is handled above). Therefore, it's ok to
