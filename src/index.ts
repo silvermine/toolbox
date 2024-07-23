@@ -35,3 +35,4 @@ export * from './utils/get';
 export * from './utils/escape-html';
 export * from './utils/make-template';
 export * from './utils/uniq';
+export * from './utils/range';
