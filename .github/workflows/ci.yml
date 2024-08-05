@@ -35,7 +35,7 @@ jobs:
          - run: npm ci # Reinstall the dependencies to ensure they install with the node's version of npm
          - run: npm test
          - name: Coveralls
-           uses: coverallsapp/github-action@v1
+           uses: coverallsapp/github-action@v2
            with:
                parallel: true
                flag-name: ${{ matrix.node-version }}
@@ -44,6 +44,6 @@ jobs:
       runs-on: ubuntu-latest
       steps:
          - name: Close parallel build
-           uses: coverallsapp/github-action@v1
+           uses: coverallsapp/github-action@v2
            with:
                parallel-finished: true
