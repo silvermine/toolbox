@@ -8,7 +8,7 @@ import { isString } from './is-string';
  * not counted as `string` values, even if the TypeScript compiler's `strictNullChecks`
  * flag is set to `false` in your project.
  */
-export function isArrayOfStrings(values: any): values is string[] {
+export function isArrayOfStrings(values: unknown): values is string[] {
    if (!isArray(values)) {
       return false;
    }
