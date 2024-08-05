@@ -37,7 +37,7 @@
    },
    "devDependencies": {
       "@silvermine/chai-strictly-equal": "1.1.0",
-      "@silvermine/eslint-config": "github:silvermine/eslint-config-silvermine#39387feb42f5d78bf4947fbb7cb0727b5ea2bebe",
+      "@silvermine/eslint-config": "github:silvermine/eslint-config-silvermine#aa8ecacb12ab778078fd195d3b15f09ecac76c11",
       "@silvermine/standardization": "2.0.0",
       "@silvermine/typescript-config": "git+https://github.com/silvermine/typescript-config#23213e33077089e723629dead5342abe6f3b3c8c",
       "@types/chai": "4.1.7",
