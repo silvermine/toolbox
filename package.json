@@ -43,7 +43,7 @@
       "@types/chai": "4.1.7",
       "@types/mocha": "5.2.7",
       "@types/node": "12.20.45",
-      "@types/sinon": "5.0.5",
+      "@types/sinon": "5.0.7",
       "chai": "4.2.0",
       "check-node-version": "4.0.2",
       "coveralls": "3.0.9",
