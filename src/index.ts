@@ -29,6 +29,7 @@ export * from './utils/is-null';
 export * from './utils/is-not-null-or-undefined';
 
 export * from './utils/chunk';
+export * from './utils/compact';
 export * from './utils/flatten';
 export * from './utils/pick';
 export * from './utils/pluck';
