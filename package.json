@@ -42,7 +42,7 @@
       "@silvermine/typescript-config": "git+https://github.com/silvermine/typescript-config#23213e33077089e723629dead5342abe6f3b3c8c",
       "@types/chai": "4.3.19",
       "@types/mocha": "5.2.7",
-      "@types/node": "12.20.45",
+      "@types/node": "20.12.2",
       "@types/sinon": "5.0.7",
       "chai": "4.5.0",
       "check-node-version": "4.2.1",
@@ -60,6 +60,6 @@
       "source-map-support": "0.5.21",
       "ts-node": "7.0.1",
       "tslib": "2.6.3",
-      "typescript": "3.9.10"
+      "typescript": "5.7.2"
    }
 }
