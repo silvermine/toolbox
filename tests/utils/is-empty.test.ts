@@ -5,7 +5,7 @@ import * as t from '../../src/index';
 describe('isEmpty', () => {
 
    it('correctly classifies empty things', () => {
-      let o;
+      let o: { a?: boolean };
 
       expect(t.isEmpty([])).to.strictlyEqual(true);
       // eslint-disable-next-line
