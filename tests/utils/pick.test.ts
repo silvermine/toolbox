@@ -40,7 +40,7 @@ describe('pick', () => {
       const onlyAge: Pick<Person, 'age'> = pick(JOHN_DOE, [ 'age' ]),
             firstNameAndAge: Pick<Person, 'firstName' | 'age'> = pick(JOHN_DOE, [ 'firstName', 'age' ]),
             requiredProps: Person = pick(WILE_E_COYOTE, [ 'firstName', 'lastName', 'age' ]),
-            noProps: {} = pick(JOHN_DOE);
+            noProps = pick(JOHN_DOE);
 
       const oneRequiredOneUndefinedOneOptional: Pick<Person, 'firstName' | 'middleInitial' | 'location'> = pick(JANE_DOE, [
          'firstName',
@@ -61,7 +61,7 @@ describe('pick', () => {
       const onlyAge: Pick<Person, 'age'> = pick(JOHN_DOE, 'age'),
             firstNameAndAge: Pick<Person, 'firstName' | 'age'> = pick(JOHN_DOE, 'firstName', 'age'),
             requiredProps: Person = pick(WILE_E_COYOTE, 'firstName', 'lastName', 'age'),
-            noProps: {} = pick(JOHN_DOE, []);
+            noProps = pick(JOHN_DOE, []);
 
       const oneRequiredOneUndefinedOneOptional: Pick<Person, 'firstName' | 'middleInitial' | 'location'> = pick(
          JANE_DOE,
