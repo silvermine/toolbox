@@ -8,6 +8,7 @@ describe('isArguments', () => {
       // Must include this test inside of an anonymous `function` because arrow functions
       // do not have `arguments`.
       (function() {
+         // eslint-disable-next-line prefer-rest-params
          expect(t.isArguments(arguments)).to.strictlyEqual(true);
       }());
    });
