@@ -21,7 +21,7 @@ describe('PropsWithType', () => {
          return from[field];
       }
 
-      let obj: TestType = { prop: 'test', anotherProp: 1, additionalProp: 2 };
+      const obj: TestType = { prop: 'test', anotherProp: 1, additionalProp: 2 };
 
       expect(getNumber(obj, 'anotherProp')).to.strictlyEqual(1);
       expect(getNumber(obj, 'additionalProp')).to.strictlyEqual(2);
@@ -42,7 +42,7 @@ describe('PropsWithType', () => {
          return isUndefined(val) ? 0 : val;
       }
 
-      let obj: TestType = { prop: 'test', anotherProp: 1, additionalProp: 2 };
+      const obj: TestType = { prop: 'test', anotherProp: 1, additionalProp: 2 };
 
       expect(getNumber(obj, 'anotherProp')).to.strictlyEqual(1);
       expect(getNumber(obj, 'additionalProp')).to.strictlyEqual(2);

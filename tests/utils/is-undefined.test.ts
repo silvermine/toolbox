@@ -11,7 +11,7 @@ describe('isUndefined', () => {
       expect(t.isUndefined(undefined)).to.strictlyEqual(true);
       expect(t.isUndefined(null)).to.strictlyEqual(false);
 
-      let obj: any = { bar: 1, baz: false, bag: undefined, bah: null };
+      const obj: any = { bar: 1, baz: false, bag: undefined, bah: null };
 
       expect(t.isUndefined(obj.foo)).to.strictlyEqual(true);
       expect(t.isUndefined(obj.bar)).to.strictlyEqual(false);

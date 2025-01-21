@@ -39,8 +39,8 @@ export function isKeyValueStringObject(o: any): o is KeyValueStringObject {
       return false;
    }
 
-   for (let k of Object.keys(o)) {
-      let v: any = (o as any)[k];
+   for (const k of Object.keys(o)) {
+      const v: any = (o as any)[k];
 
       if (!isString(v) && !isArrayOfStrings(v) && !isKeyValueStringObject(v)) {
          return false;

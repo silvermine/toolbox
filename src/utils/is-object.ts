@@ -10,7 +10,7 @@
  * @returns `true` if `o` is an `object`
  */
 export function isObject(o: unknown): o is object {
-   let type = typeof o;
+   const type = typeof o;
 
    return o !== null && (type === 'object' || type === 'function');
 }

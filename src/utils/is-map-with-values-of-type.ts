@@ -11,7 +11,7 @@ export function isMapWithValuesOfType<T>(guard: (x: any) => x is T, o: any): o i
       return false;
    }
 
-   for (let k of Object.keys(o)) {
+   for (const k of Object.keys(o)) {
       if (!guard((o as any)[k])) {
          return false;
       }

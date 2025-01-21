@@ -9,7 +9,7 @@ describe('makeTemplate', () => {
    });
 
    function one(tmpl: string, expected: string, data: Record<string, any>): void {
-      let compiled = makeTemplate(tmpl);
+      const compiled = makeTemplate(tmpl);
 
       expect(compiled(data)).to.eql(expected);
    }

@@ -28,7 +28,7 @@ export function isStringArrayOfStringsMap(o: any): o is StringArrayOfStringsMap 
       return false;
    }
 
-   for (let k of Object.keys(o)) {
+   for (const k of Object.keys(o)) {
       if (!isArrayOfStrings((o as any)[k])) {
          return false;
       }
