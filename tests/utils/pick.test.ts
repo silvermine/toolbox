@@ -86,6 +86,7 @@ describe('pick', () => {
 
    it('can pick functions from a class prototype', () => {
       class Sample {
+         // eslint-disable-next-line no-empty-function
          public testMethod(): void {}
       }
 
