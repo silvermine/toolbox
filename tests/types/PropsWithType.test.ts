@@ -1,6 +1,5 @@
 import { expect } from 'chai';
-import { PropsWithType } from '../../src/index';
-import { isUndefined } from 'util';
+import { isUndefined, PropsWithType } from '../../src/index';
 
 describe('PropsWithType', () => {
 
