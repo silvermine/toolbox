@@ -72,15 +72,15 @@ describe('get', () => {
 
    it('returns undefined for keys that don\'t exist', () => {
       expect(get(testObj, 'DNE')).to.strictlyEqual(undefined);
-      expect(get(100 as unknown as {}, 'DNE')).to.strictlyEqual(undefined);
-      expect(get([] as unknown as {}, 'DNE')).to.strictlyEqual(undefined);
-      expect(get(true as unknown as {}, 'DNE')).to.strictlyEqual(undefined);
+      expect(get(100 as unknown as object, 'DNE')).to.strictlyEqual(undefined);
+      expect(get([] as unknown as object, 'DNE')).to.strictlyEqual(undefined);
+      expect(get(true as unknown as object, 'DNE')).to.strictlyEqual(undefined);
       expect(get({}, 'DNE')).to.strictlyEqual(undefined);
    });
 
    it('returns undefined when the object parameter is null or undefined', () => {
-      expect(get(undefined as unknown as {}, 'DNE')).to.strictlyEqual(undefined);
-      expect(get(null as unknown as {}, 'DNE')).to.strictlyEqual(undefined);
+      expect(get(undefined as unknown as object, 'DNE')).to.strictlyEqual(undefined);
+      expect(get(null as unknown as object, 'DNE')).to.strictlyEqual(undefined);
    });
 
    it('returns the default value for undefined values', () => {

@@ -22,6 +22,7 @@ describe('isSet', () => {
       expect(t.isSet(undefined)).to.strictlyEqual(false);
       expect(t.isSet(null)).to.strictlyEqual(false);
       expect(t.isSet({ length: 0 })).to.strictlyEqual(false);
+      // eslint-disable-next-line no-empty-function
       expect(t.isSet(() => {})).to.strictlyEqual(false);
    });
 

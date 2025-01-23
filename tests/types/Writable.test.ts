@@ -11,12 +11,12 @@ describe('Writable', () => {
       // eslint-disable-next-line @typescript-eslint/no-type-alias
       type ReadOnlyStringMap = Readonly<StringMap>;
 
-      let obj: ReadOnlyStringMap = { a: 'test' },
-          writable: Writable<ReadOnlyStringMap>;
+      const obj: ReadOnlyStringMap = { a: 'test' };
 
       expect(obj.a).to.strictlyEqual('test');
 
-      writable = obj;
+      const writable: Writable<ReadOnlyStringMap> = obj;
+
       writable.a = 'changed';
 
       expect(writable.a).to.strictlyEqual('changed');

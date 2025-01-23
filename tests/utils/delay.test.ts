@@ -4,8 +4,9 @@ import { delay, isPromiseLike } from '../../src';
 describe('delay', () => {
 
    it('delays before returning a value', async () => {
-      let after: string | null = null,
-          promise = delay(10, 'this-is-my-test-value');
+      const promise = delay(10, 'this-is-my-test-value');
+
+      let after: string | null = null;
 
       promise.then((v) => { after = v; });
 
@@ -23,8 +24,9 @@ describe('delay', () => {
    });
 
    it('returns undefined when no value supplied', async () => {
-      let after: string | undefined = 'initial-value',
-          promise = delay(10);
+      let after: string | undefined = 'initial-value';
+
+      const promise = delay(10);
 
       promise.then((v) => { after = v; });
 

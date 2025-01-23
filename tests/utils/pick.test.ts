@@ -40,7 +40,7 @@ describe('pick', () => {
       const onlyAge: Pick<Person, 'age'> = pick(JOHN_DOE, [ 'age' ]),
             firstNameAndAge: Pick<Person, 'firstName' | 'age'> = pick(JOHN_DOE, [ 'firstName', 'age' ]),
             requiredProps: Person = pick(WILE_E_COYOTE, [ 'firstName', 'lastName', 'age' ]),
-            noProps: {} = pick(JOHN_DOE);
+            noProps = pick(JOHN_DOE);
 
       const oneRequiredOneUndefinedOneOptional: Pick<Person, 'firstName' | 'middleInitial' | 'location'> = pick(JANE_DOE, [
          'firstName',
@@ -61,7 +61,7 @@ describe('pick', () => {
       const onlyAge: Pick<Person, 'age'> = pick(JOHN_DOE, 'age'),
             firstNameAndAge: Pick<Person, 'firstName' | 'age'> = pick(JOHN_DOE, 'firstName', 'age'),
             requiredProps: Person = pick(WILE_E_COYOTE, 'firstName', 'lastName', 'age'),
-            noProps: {} = pick(JOHN_DOE, []);
+            noProps = pick(JOHN_DOE, []);
 
       const oneRequiredOneUndefinedOneOptional: Pick<Person, 'firstName' | 'middleInitial' | 'location'> = pick(
          JANE_DOE,
@@ -86,6 +86,7 @@ describe('pick', () => {
 
    it('can pick functions from a class prototype', () => {
       class Sample {
+         // eslint-disable-next-line no-empty-function
          public testMethod(): void {}
       }
 
@@ -95,7 +96,7 @@ describe('pick', () => {
    it('can pick properties from the object\'s prototype', () => {
       const objWithProto = { a: 1 } as { a: number; b: number };
 
-      (objWithProto as any).__proto__ = { b: 2 }; // eslint-disable-line no-proto
+      Object.setPrototypeOf(objWithProto, { b: 2 });
 
       expect(objWithProto.b).to.strictlyEqual(2);
       expect(pick(objWithProto, 'b')).to.eql({ b: 2 });

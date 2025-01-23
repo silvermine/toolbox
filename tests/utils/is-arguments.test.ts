@@ -8,17 +8,18 @@ describe('isArguments', () => {
       // Must include this test inside of an anonymous `function` because arrow functions
       // do not have `arguments`.
       (function() {
+         // eslint-disable-next-line prefer-rest-params
          expect(t.isArguments(arguments)).to.strictlyEqual(true);
       }());
    });
 
    it('correctly classifies non-arguments', () => {
-      (function(...args: any[]) {
+      (function(...args: unknown[]) {
          expect(t.isArguments(args)).to.strictlyEqual(false);
       }());
 
 
-      (function(arr: any[]): void {
+      (function(arr: unknown[]): void {
          expect(t.isArguments(arr)).to.strictlyEqual(false);
       }([]));
 

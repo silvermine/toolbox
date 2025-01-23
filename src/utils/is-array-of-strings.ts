@@ -13,7 +13,7 @@ export function isArrayOfStrings(values: unknown): values is string[] {
       return false;
    }
 
-   for (let v of values) {
+   for (const v of values) {
       if (!isString(v)) {
          return false;
       }

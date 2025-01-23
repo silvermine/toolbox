@@ -6,6 +6,7 @@ const DEFAULT_SETTINGS: ToolboxTemplateSettings = {
    interpolate: /<%=([\s\S]+?)%>/g,
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getValue(path: string, data: any): unknown {
    return get(data, (path || '').trim(), '');
 }
@@ -16,7 +17,7 @@ export interface ToolboxTemplateSettings {
 }
 
 export interface ToolboxTemplateFunction {
-   (data: Record<string, any>): string;
+   (data: Record<string, unknown>): string;
 }
 
 /**
@@ -51,23 +52,19 @@ export interface ToolboxTemplateFunction {
 export function makeTemplate(text: string, userSettings?: ToolboxTemplateSettings): (data: unknown) => string {
    type TemplateFunction = (data: unknown) => unknown;
 
-   let parts: (TemplateFunction | string)[] = [],
-       index = 0,
-       settings = Object.assign({}, DEFAULT_SETTINGS, userSettings || {}),
-       regExpPattern, matcher;
+   let index = 0;
 
-   regExpPattern = [
-      settings.escape.source,
-      settings.interpolate.source,
-   ];
-   matcher = new RegExp(regExpPattern.join('|') + '|$', 'g');
+   const parts: (TemplateFunction | string)[] = [],
+         settings = Object.assign({}, DEFAULT_SETTINGS, userSettings || {}),
+         regExpPattern = [ settings.escape.source, settings.interpolate.source ],
+         matcher = new RegExp(regExpPattern.join('|') + '|$', 'g');
 
    text.replace(matcher, (match, escape, interpolate, offset) => {
       parts.push(text.slice(index, offset));
       index = offset + match.length;
 
       if (escape) {
-         parts.push((data: any) => {
+         parts.push((data: unknown) => {
             return escapeHTML(getValue(escape, data));
          });
       } else if (interpolate) {

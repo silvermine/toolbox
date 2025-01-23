@@ -3,8 +3,8 @@ const iterateeUniq = <T, U>(arr: T[], iteratee: (value: T, i: number, arr: T[]) 
          seen: U[] = [];
 
    for (let i = 0, length = arr.length; i < length; i++) {
-      let value = arr[i],
-          computed = iteratee(value, i, arr);
+      const value = arr[i],
+            computed = iteratee(value, i, arr);
 
       if (seen.indexOf(computed) === -1) {
          seen.push(computed);
@@ -21,7 +21,7 @@ const sortedUniq = <T, U>(arr: T[]): T[] => {
    let lastSeen: T | U | undefined;
 
    for (let i = 0, length = arr.length; i < length; i++) {
-      let value = arr[i];
+      const value = arr[i];
 
       if (i === 0 || lastSeen !== value) {
          result.push(value);

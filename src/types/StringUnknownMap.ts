@@ -57,6 +57,6 @@ export interface StringUnknownMap { [s: string]: unknown }
  *
  * @returns `true` if `o` is a `StringUnknownMap`
  */
-export function isStringUnknownMap(o: any): o is StringUnknownMap {
+export function isStringUnknownMap(o: unknown): o is StringUnknownMap {
    return isObject(o) && !isArray(o) && !isArguments(o);
 }

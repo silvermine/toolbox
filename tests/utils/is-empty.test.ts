@@ -5,8 +5,6 @@ import * as t from '../../src/index';
 describe('isEmpty', () => {
 
    it('correctly classifies empty things', () => {
-      let o;
-
       expect(t.isEmpty([])).to.strictlyEqual(true);
       // eslint-disable-next-line
       expect(t.isEmpty(new Array())).to.strictlyEqual(true);
@@ -31,7 +29,8 @@ describe('isEmpty', () => {
       expect(t.isEmpty(() => {})).to.strictlyEqual(true);
 
       // deleting all the keys from on object empties it
-      o = { a: true };
+      const o: { a?: boolean } = { a: true };
+
       expect(t.isEmpty(o)).to.strictlyEqual(false);
       delete o.a;
       expect(t.isEmpty(o)).to.strictlyEqual(true);

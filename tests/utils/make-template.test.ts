@@ -8,8 +8,8 @@ describe('makeTemplate', () => {
       expect(makeTemplate('Hello <%= name %>')).to.be.a('function');
    });
 
-   function one(tmpl: string, expected: string, data: Record<string, any>): void {
-      let compiled = makeTemplate(tmpl);
+   function one(tmpl: string, expected: string, data: Record<string, unknown>): void {
+      const compiled = makeTemplate(tmpl);
 
       expect(compiled(data)).to.eql(expected);
    }
