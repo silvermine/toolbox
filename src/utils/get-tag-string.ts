@@ -34,6 +34,6 @@
  * @see https://github.com/jashkenas/underscore/blob/d5fe0fd4060f13b40608cb9d92eda6d857e8752c/underscore.js#L1326
  * @see https://github.com/lodash/lodash/blob/750067f42d3aa5f927604ece2c6df0ff2b2e9d72/isNumber.js#L31
  */
-export function getTagString(o: any): string {
+export function getTagString(o: unknown): string {
    return Object.prototype.toString.call(o);
 }

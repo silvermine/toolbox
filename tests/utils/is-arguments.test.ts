@@ -14,12 +14,12 @@ describe('isArguments', () => {
    });
 
    it('correctly classifies non-arguments', () => {
-      (function(...args: any[]) {
+      (function(...args: unknown[]) {
          expect(t.isArguments(args)).to.strictlyEqual(false);
       }());
 
 
-      (function(arr: any[]): void {
+      (function(arr: unknown[]): void {
          expect(t.isArguments(arr)).to.strictlyEqual(false);
       }([]));
 

@@ -6,6 +6,7 @@ const DEFAULT_SETTINGS: ToolboxTemplateSettings = {
    interpolate: /<%=([\s\S]+?)%>/g,
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getValue(path: string, data: any): unknown {
    return get(data, (path || '').trim(), '');
 }
@@ -16,7 +17,7 @@ export interface ToolboxTemplateSettings {
 }
 
 export interface ToolboxTemplateFunction {
-   (data: Record<string, any>): string;
+   (data: Record<string, unknown>): string;
 }
 
 /**
@@ -63,7 +64,7 @@ export function makeTemplate(text: string, userSettings?: ToolboxTemplateSetting
       index = offset + match.length;
 
       if (escape) {
-         parts.push((data: any) => {
+         parts.push((data: unknown) => {
             return escapeHTML(getValue(escape, data));
          });
       } else if (interpolate) {

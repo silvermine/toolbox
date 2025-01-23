@@ -96,7 +96,7 @@ describe('pick', () => {
    it('can pick properties from the object\'s prototype', () => {
       const objWithProto = { a: 1 } as { a: number; b: number };
 
-      (objWithProto as any).__proto__ = { b: 2 }; // eslint-disable-line no-proto
+      Object.setPrototypeOf(objWithProto, { b: 2 });
 
       expect(objWithProto.b).to.strictlyEqual(2);
       expect(pick(objWithProto, 'b')).to.eql({ b: 2 });

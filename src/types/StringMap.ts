@@ -1,7 +1,5 @@
-import { isObject } from '../utils/is-object';
-import { isArray } from '../utils/is-array';
-import { isArguments } from '../utils/is-arguments';
 import { isString } from '../utils/is-string';
+import { isStringUnknownMap } from './StringUnknownMap';
 
 /**
  * `StringMap`s have `string`s as keys and `string`s as values. For example:
@@ -19,15 +17,15 @@ export interface StringMap { [s: string]: string }
  *
  * @returns `true` if `o` is a `StringMap`
  */
-export function isStringMap(o: any): o is StringMap {
+export function isStringMap(o: unknown): o is StringMap {
    // Arrays and the array-like `arguments` variable are objects, so they would not be
    // caught by an `isObject` check
-   if (!isObject(o) || isArray(o) || isArguments(o)) {
+   if (!isStringUnknownMap(o)) {
       return false;
    }
 
    for (const k of Object.keys(o)) {
-      if (!isString((o as any)[k])) {
+      if (!isString(o[k])) {
          return false;
       }
    }

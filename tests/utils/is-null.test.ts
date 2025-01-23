@@ -11,7 +11,7 @@ describe('isNull', () => {
       expect(t.isNull(undefined)).to.strictlyEqual(false);
       expect(t.isNull(null)).to.strictlyEqual(true);
 
-      const obj: any = { bar: 1, baz: false, bag: undefined, bah: null };
+      const obj: Record<string, unknown> = { bar: 1, baz: false, bag: undefined, bah: null };
 
       expect(t.isNull(obj.foo)).to.strictlyEqual(false);
       expect(t.isNull(obj.bar)).to.strictlyEqual(false);

@@ -32,6 +32,7 @@ function toKey(value: unknown): string | symbol {
 const IS_DEEP_PROP_REGEX = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
       IS_PLAIN_PROP_REGEX = /^\w*$/;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isKey(value: any, object: any): boolean {
    if (Array.isArray(value)) {
       return false;
@@ -93,6 +94,7 @@ function stringToPath(str: string): string[] {
    return result;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function createPathArray(value: any, object: any): string[] {
    if (Array.isArray(value)) {
       return value;
@@ -139,6 +141,7 @@ function get<TResult = unknown>(
        resultObj: unknown = obj;
 
    while (resultObj !== null && resultObj !== undefined && index < length) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       resultObj = (resultObj as any)[toKey(pathArray[index])];
 
       index += 1;
