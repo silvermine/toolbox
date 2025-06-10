@@ -6,6 +6,7 @@ describe('isEmpty', () => {
 
    it('correctly classifies empty things', () => {
       expect(t.isEmpty([])).to.strictlyEqual(true);
+      expect(t.isEmpty(new Set([]))).to.strictlyEqual(true);
       // eslint-disable-next-line
       expect(t.isEmpty(new Array())).to.strictlyEqual(true);
       expect(t.isEmpty({})).to.strictlyEqual(true);
@@ -41,6 +42,7 @@ describe('isEmpty', () => {
       expect(t.isEmpty({ length: 0 })).to.strictlyEqual(false);
       expect(t.isEmpty([ 1 ])).to.strictlyEqual(false);
       expect(t.isEmpty(new Array(10))).to.strictlyEqual(false);
+      expect(t.isEmpty(new Set([ 1 ]))).to.strictlyEqual(false);
    });
 
 });
