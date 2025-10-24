@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [our coding standards][commit-messages] for commit guidelines.
 
+## [0.5.0](https://github.com/silvermine/toolbox/compare/v0.4.0...v0.5.0) (2025-10-24)
+
+
+### Features
+
+* Make isEmpty a type guard ([#16](https://github.com/silvermine/toolbox/issues/16)) ([b324aec](https://github.com/silvermine/toolbox/commit/b324aec3c21484bb24e911e3daab5cea7814a4f7))
+* Make isEmpty work for Sets ([#31](https://github.com/silvermine/toolbox/issues/31)) ([0bf3e39](https://github.com/silvermine/toolbox/commit/0bf3e3964ce80fc99e85ae2a07db8566da731e4d))
+* replace eslintrc.json by eslint.config.js to use partials ([73345d4](https://github.com/silvermine/toolbox/commit/73345d4a97796f008fefc222da3cd7234fd76479))
+
+
+### Bug Fixes
+
+* keep type info when checking for empty obj or array ([#114](https://github.com/silvermine/toolbox/issues/114)) ([4fe3bc0](https://github.com/silvermine/toolbox/commit/4fe3bc07660bad4a27168f5764522b4c1d4c8e18))
+* make hasDefined work for non-strict unions ([#107](https://github.com/silvermine/toolbox/issues/107)) ([34c6123](https://github.com/silvermine/toolbox/commit/34c6123198b967a374073aa362d5ba49d34233fb))
+* replace isUndefined from node utils by our own implementation ([abcd9e0](https://github.com/silvermine/toolbox/commit/abcd9e0c11cface756562627b793a74886d47a0d))
+
+
 ## [0.4.0](https://github.com/silvermine/toolbox/compare/v0.3.0...v0.4.0) (2024-09-03)
 
 
