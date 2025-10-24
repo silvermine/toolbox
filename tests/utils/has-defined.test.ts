@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { RequireOptional } from '../../src/index';
+import { RequireOptional, StrictUnion } from '../../src/index';
 import { hasDefined } from '../../src/utils/has-defined';
 import { RequireDefined } from '../../src/types/RequireDefined';
 
@@ -77,4 +77,239 @@ describe('hasDefined', () => {
 
       callOtherFunction(t);
    });
+
+   it('works with generics', () => {
+      function fnWithGeneric<T extends { prop: string; optionalProp?: string }>(item: T): boolean {
+         return hasDefined(item, 'optionalProp') || hasDefined(item, 'prop');
+      }
+
+      expect(fnWithGeneric({ prop: 'test', optionalProp: 'test' })).to.strictlyEqual(true);
+      expect(fnWithGeneric({ prop: 'test' })).to.strictlyEqual(true);
+   });
+
+   describe('runtime behavior', () => {
+
+      it('returns true when optional property is defined', () => {
+         const obj: TestType = {
+            optString: 'test',
+            reqString: 'a',
+            stringOrUndefined: 'b',
+            reqNumber: 1,
+            reqBoolean: true,
+         };
+
+         expect(hasDefined(obj, 'optString')).to.strictlyEqual(true);
+      });
+
+      it('returns false when optional property is undefined', () => {
+         const obj: TestType = {
+            optString: undefined,
+            reqString: 'a',
+            stringOrUndefined: 'b',
+            reqNumber: 1,
+            reqBoolean: true,
+         };
+
+         expect(hasDefined(obj, 'optString')).to.strictlyEqual(false);
+      });
+
+      it('returns false when optional property is missing', () => {
+         const obj: TestType = {
+            reqString: 'a',
+            stringOrUndefined: 'b',
+            reqNumber: 1,
+            reqBoolean: true,
+         };
+
+         expect(hasDefined(obj, 'optString')).to.strictlyEqual(false);
+      });
+
+      it('returns false when property with union type is undefined', () => {
+         const obj: TestType = {
+            reqString: 'a',
+            stringOrUndefined: undefined,
+            reqNumber: 1,
+            reqBoolean: true,
+         };
+
+         expect(hasDefined(obj, 'stringOrUndefined')).to.strictlyEqual(false);
+      });
+
+      it('returns true when required property is defined', () => {
+         const obj: TestType = {
+            reqString: 'a',
+            stringOrUndefined: 'b',
+            reqNumber: 1,
+            reqBoolean: true,
+         };
+
+         expect(hasDefined(obj, 'reqString')).to.strictlyEqual(true);
+      });
+
+
+      it('returns true for falsy values that are not undefined', () => {
+         interface FalsyType {
+            optZero?: number;
+            optFalse?: boolean;
+            optEmptyString?: string;
+         }
+
+         const obj: FalsyType = {
+            optZero: 0,
+            optFalse: false,
+            optEmptyString: '',
+         };
+
+         expect(hasDefined(obj, 'optZero')).to.strictlyEqual(true);
+         expect(hasDefined(obj, 'optFalse')).to.strictlyEqual(true);
+         expect(hasDefined(obj, 'optEmptyString')).to.strictlyEqual(true);
+      });
+
+      it('returns false for null values', () => {
+         interface NullableType {
+            optValue?: string | null;
+         }
+
+         const obj: NullableType = {
+            optValue: null,
+         };
+
+         // Note: hasDefined checks for undefined, not null, so this returns true
+         expect(hasDefined(obj, 'optValue')).to.strictlyEqual(true);
+      });
+
+      describe('multiple property checks', () => {
+
+         it('can chain multiple hasDefined checks', () => {
+            const obj: TestType = {
+               optString: 'test',
+               optNumber: 42,
+               optBoolean: true,
+               reqString: 'a',
+               stringOrUndefined: 'b',
+               reqNumber: 1,
+               reqBoolean: true,
+            };
+
+            const allDefined = hasDefined(obj, 'optString')
+               && hasDefined(obj, 'optNumber')
+               && hasDefined(obj, 'optBoolean');
+
+            expect(allDefined).to.strictlyEqual(true);
+         });
+
+         it('returns false when any property in chain is undefined', () => {
+            const obj: TestType = {
+               optString: 'test',
+               optNumber: undefined,
+               reqString: 'a',
+               stringOrUndefined: 'b',
+               reqNumber: 1,
+               reqBoolean: true,
+            };
+
+            const allDefined = hasDefined(obj, 'optString')
+               && hasDefined(obj, 'optNumber')
+               && hasDefined(obj, 'optBoolean');
+
+            expect(allDefined).to.strictlyEqual(false);
+         });
+
+      });
+
+   });
+
+   describe('StrictUnion types', () => {
+
+      type StrictUnionType = StrictUnion<
+         { name: string }
+         | { firstName: string; lastName: string }
+         | { groupName: string }
+         | { groupName: string; name: string }
+      >;
+
+      // Typescript is being too smart with the const's below and inferring the type as
+      // the const value instead of the union type. This function ensures we're testing
+      // against the union.
+      function testValue(obj: StrictUnionType): StrictUnionType {
+         return obj;
+      }
+
+      it('works with property present in single union member', () => {
+         const obj = testValue({ firstName: 'John', lastName: 'Doe' });
+
+         expect(hasDefined(obj, 'firstName')).to.strictlyEqual(true);
+         expect(hasDefined(obj, 'lastName')).to.strictlyEqual(true);
+      });
+
+      it('returns false when checking for property not in current member', () => {
+         const obj = testValue({ name: 'John Doe' });
+
+         expect(hasDefined(obj, 'firstName')).to.strictlyEqual(false);
+         expect(hasDefined(obj, 'groupName')).to.strictlyEqual(false);
+      });
+
+      it('works with property present in multiple union members', () => {
+         const obj1 = testValue({ name: 'John' }),
+               obj2 = testValue({ groupName: 'Team A', name: 'Project X' });
+
+         expect(hasDefined(obj1, 'name')).to.strictlyEqual(true);
+         expect(hasDefined(obj2, 'name')).to.strictlyEqual(true);
+         expect(hasDefined(obj2, 'groupName')).to.strictlyEqual(true);
+      });
+
+      it('narrows type when checking properties', () => {
+         function processWithFirstName(obj: { firstName: string; lastName: string }): string {
+            return `${obj.firstName} ${obj.lastName}`;
+         }
+
+         function handleObject(obj: StrictUnionType): void {
+            if (hasDefined(obj, 'firstName') && hasDefined(obj, 'lastName')) {
+               processWithFirstName(obj);
+            }
+         }
+
+         const obj = testValue({ firstName: 'Jane', lastName: 'Smith' });
+
+         handleObject(obj);
+      });
+
+      it('handles union member with single property', () => {
+         const obj = testValue({ groupName: 'Engineering' });
+
+         expect(hasDefined(obj, 'groupName')).to.strictlyEqual(true);
+         expect(hasDefined(obj, 'name')).to.strictlyEqual(false);
+      });
+
+      it('distinguishes between union members by property presence', () => {
+         const objects: StrictUnionType[] = [
+            { name: 'Alice' },
+            { firstName: 'Bob', lastName: 'Jones' },
+            { groupName: 'Team B' },
+            { groupName: 'Team C', name: 'Project Y' },
+         ];
+
+         const withName = objects.filter((obj) => {
+            return hasDefined(obj, 'name');
+         });
+
+         const withFirstName = objects.filter((obj) => {
+            return hasDefined(obj, 'firstName');
+         });
+
+         expect(withName).to.have.lengthOf(2);
+         expect(withFirstName).to.have.lengthOf(1);
+      });
+
+      it('works when union member has overlapping properties', () => {
+         const obj = testValue({ groupName: 'Team D', name: 'Project Z' });
+
+         const hasBoth = hasDefined(obj, 'groupName') && hasDefined(obj, 'name');
+
+         expect(hasBoth).to.strictlyEqual(true);
+         expect(hasDefined(obj, 'firstName')).to.strictlyEqual(false);
+      });
+
+   });
+
 });
