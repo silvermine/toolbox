@@ -1,5 +1,6 @@
 import { isUndefined } from './is-undefined';
 import { RequireDefined } from '../types/RequireDefined';
+import { UnionKeys } from '../types/UnionKeys';
 
 /**
  * Tests that an optional or possibly-undefined property on type `T` is defined (that is,
@@ -18,6 +19,6 @@ import { RequireDefined } from '../types/RequireDefined';
  * @param propName the name of the optional or possibly-undefined property that you want
  * to be required
  */
-export function hasDefined<T, U extends keyof T>(o: T, propName: U): o is RequireDefined<T, U> {
+export function hasDefined<T, U extends keyof T | UnionKeys<T>>(o: T, propName: U): o is RequireDefined<Extract<T, { [key in U]?: unknown }>, U> {
    return Object.prototype.hasOwnProperty.call(o, propName) && !isUndefined(o[propName]);
 }
