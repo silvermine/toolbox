@@ -38,7 +38,10 @@ type IEmptyTypes = (
  *
  * @returns `true` if `o` is empty
  */
-export function isEmpty(o: unknown): o is IEmptyTypes {
+export function isEmpty(o: unknown[]): boolean;
+export function isEmpty(o: object): boolean;
+export function isEmpty(o: unknown): o is IEmptyTypes;
+export function isEmpty(o: unknown): boolean {
    if (isNull(o) || isUndefined(o) || isBoolean(o) || isNumber(o)) {
       return true;
    }
