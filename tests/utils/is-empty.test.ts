@@ -45,4 +45,58 @@ describe('isEmpty', () => {
       expect(t.isEmpty(new Set([ 1 ]))).to.strictlyEqual(false);
    });
 
+   it('keeps type information when checking for empty array', () => {
+      const arr: string[] = [];
+
+      if (t.isEmpty(arr)) {
+         arr.push('test');
+      }
+
+      expect(arr.length).to.strictlyEqual(1);
+   });
+
+   it('keeps type information when checking for empty record', () => {
+      const obj: Record<string, number> = {};
+
+      if (t.isEmpty(obj)) {
+         obj.test = 1;
+      }
+
+      expect(obj.test).to.strictlyEqual(1);
+   });
+
+   it('works as a type guard for strings', () => {
+      const testFn = (val: string | undefined): void => {
+         if (t.isEmpty(val)) {
+            const undef: '' | undefined = val;
+
+            expect(undef).to.strictlyEqual(undefined);
+         } else {
+            const str: string = val;
+
+            expect(str).to.strictlyEqual('test');
+         }
+      };
+
+      testFn(undefined);
+      testFn('test');
+   });
+
+   it('works as a type guard', () => {
+      const testFn = (val: { a: boolean } | undefined): void => {
+         if (t.isEmpty(val)) {
+            const undef: undefined = val;
+
+            expect(undef).to.strictlyEqual(undefined);
+         } else {
+            const obj: { a: boolean } = val;
+
+            expect(obj.a).to.strictlyEqual(true);
+         }
+      };
+
+      testFn(undefined);
+      testFn({ a: true });
+   });
+
 });
