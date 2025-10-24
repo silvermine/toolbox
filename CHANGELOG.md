@@ -10,7 +10,6 @@ See [our coding standards][commit-messages] for commit guidelines.
 
 * Make isEmpty a type guard ([#16](https://github.com/silvermine/toolbox/issues/16)) ([b324aec](https://github.com/silvermine/toolbox/commit/b324aec3c21484bb24e911e3daab5cea7814a4f7))
 * Make isEmpty work for Sets ([#31](https://github.com/silvermine/toolbox/issues/31)) ([0bf3e39](https://github.com/silvermine/toolbox/commit/0bf3e3964ce80fc99e85ae2a07db8566da731e4d))
-* replace eslintrc.json by eslint.config.js to use partials ([73345d4](https://github.com/silvermine/toolbox/commit/73345d4a97796f008fefc222da3cd7234fd76479))
 
 
 ### Bug Fixes
