@@ -165,7 +165,7 @@ describe('hasDefined', () => {
          expect(hasDefined(obj, 'optEmptyString')).to.strictlyEqual(true);
       });
 
-      it('returns false for null values', () => {
+      it('returns true for null values', () => {
          interface NullableType {
             optValue?: string | null;
          }
