@@ -35,6 +35,7 @@ export * from './utils/pick';
 export * from './utils/pluck';
 export * from './utils/delay';
 export * from './utils/get';
+export * from './utils/group-by';
 export * from './utils/escape-html';
 export * from './utils/make-template';
 export * from './utils/uniq';
