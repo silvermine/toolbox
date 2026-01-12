@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [our coding standards][commit-messages] for commit guidelines.
 
+## [0.7.0](https://github.com/silvermine/toolbox/compare/v0.6.0...v0.7.0) (2026-01-12)
+
+
+### Features
+
+* add isFunction helper ([6e79c52](https://github.com/silvermine/toolbox/commit/6e79c527f5b5a3203db34a69188c792dde840c9e))
+* add JSON.stringify replacer to deterministically sort object keys ([da7cce7](https://github.com/silvermine/toolbox/commit/da7cce7711a8080e199c856a1016adfa4748458f))
+
+
+### Bug Fixes
+
+* resolve issues for Typescript version 5.7.2 ([83eef93](https://github.com/silvermine/toolbox/commit/83eef93c893d9af091aa29383235924818e3964e))
+
+
 ## [0.6.0](https://github.com/silvermine/toolbox/compare/v0.5.1...v0.6.0) (2025-11-12)
 
 
