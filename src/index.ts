@@ -41,4 +41,5 @@ export * from './utils/escape-html';
 export * from './utils/make-template';
 export * from './utils/uniq';
 export * from './utils/range';
+export * from './utils/shuffle';
 export * from './utils/sort-keys-replacer';
