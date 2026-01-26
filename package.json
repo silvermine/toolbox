@@ -7,7 +7,7 @@
    "module": "./dist/esm/index",
    "scripts": {
       "prepare": "grunt build",
-      "check-node-version": "check-node-version --npm 10.5.0 --print",
+      "check-node-version": "check-node-version --npm 11.6.1 --print",
       "test": "TS_NODE_PROJECT='tests/tsconfig.json' TS_NODE_FILES=true nyc mocha --opts ./.mocha.opts",
       "eslint": "eslint '{,!(node_modules|dist)/**/}*.{js,ts}'",
       "markdownlint": "markdownlint -c .markdownlint.json -i CHANGELOG.md '{,!(node_modules)/**/}*.md'",
@@ -42,7 +42,7 @@
       "@silvermine/typescript-config": "git+https://github.com/silvermine/typescript-config#23213e33077089e723629dead5342abe6f3b3c8c",
       "@types/chai": "4.3.20",
       "@types/mocha": "5.2.7",
-      "@types/node": "20.12.2",
+      "@types/node": "24.10.0",
       "@types/sinon": "5.0.7",
       "chai": "4.5.0",
       "check-node-version": "4.2.1",
