@@ -1,13 +1,13 @@
 const iterateeUniq = <T, U>(arr: T[], iteratee: (value: T, i: number, arr: T[]) => U): T[] => {
    const result: T[] = [],
-         seen: U[] = [];
+         seen = new Set<U>();
 
    for (let i = 0, length = arr.length; i < length; i++) {
       const value = arr[i],
             computed = iteratee(value, i, arr);
 
-      if (seen.indexOf(computed) === -1) {
-         seen.push(computed);
+      if (!seen.has(computed)) {
+         seen.add(computed);
          result.push(value);
       }
    }
@@ -33,11 +33,7 @@ const sortedUniq = <T, U>(arr: T[]): T[] => {
 
 
 const standardUniq = <T>(arr: T[]): T[] => {
-   const result = arr.filter((value, index, _arr) => {
-      return _arr.indexOf(value) === index;
-   });
-
-   return result;
+   return Array.from(new Set(arr));
 };
 
 
