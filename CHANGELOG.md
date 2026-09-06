@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [our coding standards][commit-messages] for commit guidelines.
 
+### [0.8.0](https://github.com/silvermine/toolbox/compare/v0.7.0...v0.8.0) (2026-09-06)
+
+
+### Features
+
+* add shuffle utility for randomizing array order ([a869038](https://github.com/silvermine/toolbox/commit/a869038a02b837d66cd8863b948ca01b4c124b3b))
+
+
+### Performance Improvements
+
+* use Set for O(1) lookups in uniq ([#129](https://github.com/silvermine/toolbox/issues/129)) ([7067397](https://github.com/silvermine/toolbox/commit/7067397d7b25c0ea2732bea750846b3534d95485))
+
+
 ## [0.7.0](https://github.com/silvermine/toolbox/compare/v0.6.0...v0.7.0) (2026-01-12)
 
 
